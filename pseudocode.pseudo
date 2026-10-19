@@ -1,0 +1,235 @@
+BEGIN
+
+SET appState = {
+  user: null,
+  isAuthenticated: false,
+  shoppingLists: [],
+  loading: false,
+  error: null
+}
+
+FUNCTION initializeApp()
+  LOAD user session from local storage
+  IF user session exists THEN
+    appState.user = session.user
+    appState.isAuthenticated = true
+  ENDIF
+END FUNCTION
+
+FUNCTION registerUser(formData)
+  VALIDATE formData.email, password, name, surname, cellNumber
+  IF validation fails THEN
+    DISPLAY validation error
+    RETURN
+  ENDIF
+
+  encryptedPassword = hashPassword(formData.password)
+  newUser = {
+    email: formData.email,
+    password: encryptedPassword,
+    name: formData.name,
+    surname: formData.surname,
+    cellNumber: formData.cellNumber
+  }
+
+  SAVE newUser to JSON Server
+  DISPLAY success message
+  REDIRECT to Login page
+END FUNCTION
+
+FUNCTION loginUser(formData)
+  VALIDATE formData.email and formData.password
+  IF validation fails THEN
+    DISPLAY validation error
+    RETURN
+  ENDIF
+
+  user = FIND user in database WHERE email = formData.email
+
+  IF user is found AND passwordMatches(user.password, formData.password) THEN
+    appState.user = user
+    appState.isAuthenticated = true
+    SAVE session to local storage
+    REDIRECT to Home page
+  ELSE
+    DISPLAY invalid credentials message
+  ENDIF
+END FUNCTION
+
+FUNCTION protectRoute(route)
+  IF route requires authentication AND appState.isAuthenticated = false THEN
+    REDIRECT to Login page
+  ENDIF
+
+  IF route is Login or Register AND appState.isAuthenticated = true THEN
+    REDIRECT to Home page
+  ENDIF
+END FUNCTION
+
+FUNCTION loadShoppingLists()
+  appState.loading = true
+  FETCH shopping lists from JSON Server
+
+  IF fetch succeeds THEN
+    appState.shoppingLists = response.data
+    appState.loading = false
+  ELSE
+    appState.error = "Could not load shopping lists"
+    appState.loading = false
+  ENDIF
+END FUNCTION
+
+FUNCTION addShoppingItem(item)
+  VALIDATE item.name, item.quantity, item.category
+
+  IF validation fails THEN
+    DISPLAY validation error
+    RETURN
+  ENDIF
+
+  NEW itemRecord = {
+    id: generateId(),
+    name: item.name,
+    quantity: item.quantity,
+    notes: item.notes,
+    category: item.category,
+    image: item.image,
+    createdAt: currentDate()
+  }
+
+  appState.shoppingLists.push(itemRecord)
+  SEND POST request to JSON Server
+
+  IF request succeeds THEN
+    DISPLAY success alert
+  ELSE
+    DISPLAY error alert
+  ENDIF
+END FUNCTION
+
+FUNCTION updateShoppingItem(itemId, updatedData)
+  VALIDATE updatedData
+
+  itemIndex = FIND index of item with id = itemId
+  IF itemIndex is not found THEN
+    DISPLAY item not found message
+    RETURN
+  ENDIF
+
+  appState.shoppingLists[itemIndex] = {
+    ...appState.shoppingLists[itemIndex],
+    ...updatedData
+  }
+
+  SEND PUT/PATCH request to JSON Server
+
+  IF request succeeds THEN
+    DISPLAY update success
+  ELSE
+    DISPLAY update error
+  ENDIF
+END FUNCTION
+
+FUNCTION deleteShoppingItem(itemId)
+  itemIndex = FIND index of item with id = itemId
+
+  IF itemIndex is not found THEN
+    DISPLAY item not found message
+    RETURN
+  ENDIF
+
+  REMOVE item from appState.shoppingLists
+  SEND DELETE request to JSON Server
+
+  IF request succeeds THEN
+    DISPLAY delete success
+  ELSE
+    DISPLAY delete error
+  ENDIF
+END FUNCTION
+
+FUNCTION searchItems(keyword)
+  IF keyword is empty THEN
+    RETURN appState.shoppingLists
+  ENDIF
+
+  FILTER shoppingLists WHERE item.name contains keyword
+  RETURN filteredResults
+END FUNCTION
+
+FUNCTION sortItems(items, sortOption)
+  SWITCH sortOption
+    CASE "name"
+      RETURN items sorted by name ascending
+    CASE "category"
+      RETURN items sorted by category ascending
+    CASE "date"
+      RETURN items sorted by createdAt descending
+    DEFAULT
+      RETURN items
+  END SWITCH
+END FUNCTION
+
+FUNCTION updateURLWithFilters(searchKeyword, sortOption)
+  SET URL query parameters
+  DISPLAY query values in browser address bar
+END FUNCTION
+
+FUNCTION syncURLToState()
+  READ URL query parameters
+  searchKeyword = GET "search"
+  sortOption = GET "sort"
+
+  filteredItems = searchItems(searchKeyword)
+  sortedItems = sortItems(filteredItems, sortOption)
+  RENDER sortedItems on page
+END FUNCTION
+
+FUNCTION updateProfile(userId, updatedProfile)
+  VALIDATE updatedProfile fields
+  IF invalid THEN
+    DISPLAY validation error
+    RETURN
+  ENDIF
+
+  user = FIND user by id = userId
+  UPDATE user information
+  SAVE to JSON Server
+  DISPLAY profile updated message
+END FUNCTION
+
+FUNCTION updateCredentials(userId, newEmail, newPassword)
+  VALIDATE email format and password rules
+  encryptedPassword = hashPassword(newPassword)
+
+  UPDATE user record with new email and encrypted password
+  SAVE to JSON Server
+  DISPLAY credentials updated message
+END FUNCTION
+
+FUNCTION renderHomePage()
+  user = appState.user
+  items = appState.shoppingLists
+
+  IF user is null THEN
+    REDIRECT to Login page
+    RETURN
+  ENDIF
+
+  filteredItems = searchItems(currentSearchTerm)
+  sortedItems = sortItems(filteredItems, currentSort)
+  DISPLAY sortedItems in responsive layout
+END FUNCTION
+
+MAIN
+  initializeApp()
+  protectRoute(currentRoute)
+  IF appState.isAuthenticated = true THEN
+    loadShoppingLists()
+    renderHomePage()
+  ELSE
+    RENDER Login or Register page
+  ENDIF
+END MAIN
+
+END
