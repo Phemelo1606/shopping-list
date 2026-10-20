@@ -17,6 +17,7 @@ This application allows users to:
 ## Features
 
 ### User management
+
 - Registration with email, password, name, surname, and cell number
 - Login with saved user credentials
 - Encrypted password handling for sign-up and login flow
@@ -25,6 +26,7 @@ This application allows users to:
 - Protected routing so guests cannot access authenticated pages
 
 ### Shopping list management
+
 - Add shopping list items with:
   - name
   - quantity
@@ -39,6 +41,7 @@ This application allows users to:
 - Maintain persistent records through JSON server
 
 ### User experience
+
 - Clean and intuitive interface
 - Responsive layout for common breakpoints
 - Reusable components and structured app architecture
@@ -140,3 +143,7 @@ This repository is structured as a task-based React application following the in
 ## License
 
 This project is for educational and portfolio use.
+
+## Figma link
+
+- https://www.figma.com/design/HyTp4BG8pUIaUEKxDPG0sg/Untitled?node-id=0-1&t=tvHY6OeC4iLBM5z7-1
