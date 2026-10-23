@@ -1,193 +1,149 @@
-Topic: ReactTS <br />
-Submission Date: 26 October 2026 <br />
-Time: 09:00 AM
+﻿# Shopping List App
 
+A responsive React + TypeScript shopping list application built to support user authentication, protected routing, profile management, and full shopping list CRUD operations. The project follows the requirements in the task brief and is designed to work with Redux for state management and JSON server for persistence.
 
-Please submit by pushing to your GitHub repository and creating a pull request to your mentor
+## Overview
 
-# Title: Task 5 - Shopping List App
+This application allows users to:
 
-## Objective
-Build a shopping list application using ReactTS and json-server that allows users to create and track different shopping lists using Redux for state management. Make use of proper web app navigation practices.
+- Register and log in securely
+- View and update their profile
+- Create, read, update, and delete shopping lists
+- Add items with details such as name, quantity, category, notes, and image
+- Search and sort items by name, category, and date added
+- Navigate across protected pages with role-aware access control
+- Use the app across different screen sizes with a mobile-friendly layout
 
-### This is the fifth official task for React based on Lesson 5.
+## Features
 
-## Requirements
+### User management
 
-### Pages
-1. Login Page
-2. Registration Page
-3. Home Page
-4. Profile Page
-   
-### User Interface
-1. Create a user-friendly interface that is intuitive and easy to use
-2. Allow users to access the pages easily regardless of screen size
-3. The interface should have an appropriate page with appropriate elements to display, and manage the shopping lists and their items
+- Registration with email, password, name, surname, and cell number
+- Login with saved user credentials
+- Encrypted password handling for sign-up and login flow
+- Profile page that allows users to view and edit personal details
+- Account credential update support
+- Protected routing so guests cannot access authenticated pages
 
-### FEATURE REQUIREMENTS
-#### User management:
-1. Authentication:
-   <ol type="a" start="a">
-      <li >
-          Users should be able to register with the following information:
-         <ul>
-            <li>Email address</li>
-            <li>Password</li>
-            <li>Name</li>
-            <li>Surname</li>
-            <li>Cell number</li>
-         </ul>
-      </li>
-      <li>
-         Users should be able to login with their credentials
-      </li>
-      <li>
-         User login credentials should be encrypted on sign up, and decrypted when logging in
-      </li>
-   </ol>
-2. Authorisation: make use of protected routing to only give access to pages users should access (eg logged in users shouldn’t see the registration and login pages)
-3. Profile management: Users should be able to do the following;
-   <ul>
-      <li>View their profile</li>
-      <li>Update their profile</li>
-      <li>Update their login credentials</li>
-   </ul>
+### Shopping list management
 
-#### Shopping List management:
-1. Add Function:
-   <ol type="a" start="a">
-      <li>
-         Users can add a new shopping list  with the following details:
-         <ul>
-            <li>Name</li>
-            <li>Quantity</li>
-            <li>Optional notes</li>
-            <li>Category</li>
-            <li>Item images</li>
-         </ul>
-      </li>
-      <li>Users can add multiple shopping lists</li>
-   </ol>
-2. Read Function:
-   <ol>
-      <li>Users can view all existing shopping lists they added</li>
-   </ol>
-3. Update Function:
-   <ol>
-      <li>Users can edit existing shopping lists.</li>
-   </ol>
-4. Delete Function:
-   <ol>
-      <li>Users can delete existing shopping lists and shopping list items.</li>
-   </ol>
-5. Search Function:
-   <ol>
-      <li>Users can search for items  by name.</li>
-      <li>The search keyword is shown on the URL.</li>
-      <li>When users interact with the URL search the page is updated.</li>     
-   </ol>
-6. Sorting Function:
-   <ol>
-      <li>Users can sort the items according to:
-         <ul>
-            <li>Name</li>
-            <li>Category</li>
-            <li>Date added</li>
-         </ul>
-      </li>
-      <li>The sorting is also visible on the URL eg https://www.takealot.com/gaming/gaming-desks-33363?sort=Price%20Descending.</li>
-      <li>When users update the URL with a valid sort keyword the page is updated.</li>     
-   </ol>
-7. Item Categories or Tags:
-   <ol>
-      <li>Use categories to classify items for better organisation.</li>
-   </ol>
-8. Make use of Create, Read, Update and Delete operations for the shopping lists
-9. Accessibility:
-   <ol>
-      <li>Users can share their shopping lists with others.</li>
-   </ol>
+- Add shopping list items with:
+  - name
+  - quantity
+  - optional notes
+  - category
+  - image
+- View existing shopping lists
+- Edit current items and list details
+- Delete items or entire shopping lists
+- Search by item name
+- Sort lists by name, category, and date added
+- Maintain persistent records through JSON server
 
+### User experience
 
-#### Data management
-1. Persistence:
-   - Use a JSON server to store all the data
-2. State management:
-   - Make use of Redux to manage the state of your application
-3. Performance:
-   - Optimise the app for fast loading and smooth performance.
-4. Privacy & Security:
-   - Protect user data and privacy in accordance with relevant laws and regulations.
+- Clean and intuitive interface
+- Responsive layout for common breakpoints
+- Reusable components and structured app architecture
+- URL-based search and sorting state for better usability
+- Clear navigation between login, registration, home, and profile pages
 
+## Tech stack
 
-#### Evaluation Criteria:
-1. Trainee interaction with GitHub. Are frequent commits made for every feature and momentarily to keep working code remotely backed up
-2. User-friendliness and visual appeal of the design
-   - Is the design intuitive
-   - Does the design have a proper and understandable layout
-   - Does the app flow from one function to another in an understandable and easy to follow manner
-   - Does the app show notifications for processes occurring in the background and after an operation
-   - Does the design have colors that blend well together
-   - Does the design maintain a consistent typography
-3. Functionality
-   - Users can register with the required inputs
-   - Users can login
-   - User credentials are encrypted for security
-   - Users can add new shopping lists
-   - Users can view existing lists
-   - Users can update lists
-   - Users can delete lists
-   - Users can filter the lists according by:
-      - Name
-   - Users can sort the lists by:
-      - Name
-      - Category
-      - Date added
-   - When user sorts and filters the keywords are shown on the URL
-   - When user updates the sort or filter keyword on the URL, the app listens and updates its view accordingly
-4. Security
-   - Are routes protected
-      - Are non-logged in users able to the home page that a logged in user would see
-      - Are logged in users able to access the register and login pages
-   - Are user credentials encrypted
-5. Page interactivity
-   - The mouse cursor changes when hovering over clickable elements
-   - Clickable elements change color when hovered over to indicate interactivity
-   - It is easy to navigate through the application’s different pages
-6. Utilisation of ReactTS features
-   -  Did trainee create their own components
-   -  Were the components reused where appropriate
-   -  Was React state utilised properly
-   -  Were props sent and handled properly
-   -  Components are customised through props for similar design elements instead of creating new elements
-7. Code quality and code organisation
-   -  Variable names follow the standard and recommended naming approach, camelCasing
-   -  Variable names are self-explanatory
-   -  Logic is broken into smaller code blocks (functions) making it more readable
-   -  Comments utilised where necessary
-8. Responsiveness of the page
-   -  Is the page responsive to different web view sizes at these common breakpoints:
-        - 320px
-        - 480px
-        - 768px
-        - 1024px
+- React
+- TypeScript
+- Vite
+- Redux
+- React Router
+- JSON Server
+- CSS / component styling
 
-#### Documentation
-   - Did trainee document their project in the GitHub Readme file with the relevant information required
+## Project structure
 
-#### Instructions:
-1. Create a React project to address this problem or use case. You are expected to come up with your own design.
-2. Make use of reusable components wherever applicable
-3. Make it responsive to different screen sizes.
-4. The main point of data storage will be  json-server, which will allow you to add, update and delete from it.
-5. You are allowed to use libraries in this project as long as they do not get in the way of you addressing the requirements of the app. Eg Tailwind for CSS
-6. You are to submit in the form of a github pull request. Sending code files or a repo with no PR will not count as a submission.
+```text
+shopping-list/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── redux/
+│   ├── routes/
+│   ├── services/
+│   ├── App.tsx
+│   └── main.tsx
+├── public/
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+├── instructions.md
+├── README.md
+└── index.html
+```
 
-#### Deliverables
-1. Design
-2. Step by step planning
-3. Pseudocode
-4. UI implementation
-5. Algorithm
-6. Readme file
+## Prerequisites
+
+Before running the project, make sure you have the following installed:
+
+- Node.js (v18 or newer recommended)
+- npm
+
+## Installation
+
+1. Clone the repository
+2. Navigate to the project folder
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+## Running the app
+
+Start the frontend development server:
+
+```bash
+npm run dev
+```
+
+Then open the local URL shown in the terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+To build the app for production:
+
+```bash
+npm run build
+```
+
+## JSON server setup
+
+This project is intended to use JSON server for persistent data storage. In a full implementation, a local JSON database and server script would be used to handle user and shopping list records. The app is designed around this data flow so that CRUD operations remain consistent and state-driven.
+
+## Requirements mapping
+
+This project addresses the task requirements for:
+
+- Login page
+- Registration page
+- Home page
+- Profile page
+- Protected routing
+- User profile management
+- Shopping list CRUD functionality
+- Search and sorting by URL query parameters
+- Responsive UI
+- Redux-based state architecture
+- Documentation through the GitHub README
+
+## Notes
+
+This repository is structured as a task-based React application following the instruction brief. The app can be extended further with real API integration, stronger authentication handling, and polished styling as needed.
+
+## License
+
+This project is for educational and portfolio use.
+
+## Figma link
+
+- https://www.figma.com/design/HyTp4BG8pUIaUEKxDPG0sg/Untitled?node-id=0-1&t=tvHY6OeC4iLBM5z7-1
