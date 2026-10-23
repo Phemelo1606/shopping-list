@@ -7,6 +7,7 @@ import RegisterPage from "../src/app/pages/RegisterPage";
 import HomePage from "../src/app/pages/HomePage";
 import ProfilePage from "../src/app/pages/ProfilePage";
 
+
 export default function App() {
   return (
     <Routes>

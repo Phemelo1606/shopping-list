@@ -69,3 +69,31 @@ textarea {
         transition: none !important;
     }
 }
+
+/* ---- Shared form layout ---- */
+.form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.form-error {
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--color-danger);
+    background: #fbeeeb;
+    border-radius: var(--radius-sm);
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
