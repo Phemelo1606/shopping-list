@@ -36,13 +36,13 @@
     border-left-color: var(--color-accent);
 }
 
-.toast__message {
+.toast-message {
     flex: 1;
     margin: 0;
     font-size: 13px;
 }
 
-.toast__close {
+.toast-close {
     padding: 0 4px;
     font-size: 18px;
     line-height: 1;
@@ -53,7 +53,7 @@
     transition: color var(--transition);
 }
 
-.toast__close:hover {
+.toast-close:hover {
     color: var(--color-text);
 }
 

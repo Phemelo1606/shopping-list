@@ -21,10 +21,10 @@ export default function Toast({ id, type, message, onDismiss, duration = 4000 }:
 
   return (
     <div className={`toast toast--${type}`} role={type === "error" ? "alert" : "status"}>
-      <p className="toast__message">{message}</p>
+      <p className="toast-message">{message}</p>
       <button
         type="button"
-        className="toast__close"
+        className="toast-close"
         aria-label="Dismiss notification"
         onClick={() => onDismiss(id)}
       >
