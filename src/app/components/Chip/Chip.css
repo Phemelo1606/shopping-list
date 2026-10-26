@@ -1,0 +1,24 @@
+.chip {
+    display: inline-block;
+    max-width: 100%;
+    padding: 4px 12px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-radius: var(--radius-pill);
+}
+
+.chip--category {
+    color: var(--color-text);
+    background: var(--color-white);
+}
+
+.chip--quantity {
+    padding: 3px 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.55);
+}

@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+    /* Colours */
+    --color-bg: #fafaf5;
+    --color-surface: #d5dad3;
+    --color-surface-soft: #ebece4;
+    --color-white: #ffffff;
+    --color-primary: #3f5b48;
+    --color-primary-hover: #2f4637;
+    --color-accent: #b5573a;
+    --color-text: #2a342d;
+    --color-muted: #6b756d;
+    --color-border: #dfe2da;
+    --color-danger: #b3402e;
+    --color-danger-hover: #8f3123;
+    --color-success: #3f5b48;
+
+    /* Typography */
+    --font-heading: "Instrument Serif", Georgia, serif;
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    /* Shape and motion */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+    --shadow-soft: 0 1px 2px rgba(42, 52, 45, 0.06), 0 6px 18px rgba(42, 52, 45, 0.08);
+    --transition: 150ms ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+/* ---- Shared form layout ---- */
+.form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.form-error {
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--color-danger);
+    background: #fbeeeb;
+    border-radius: var(--radius-sm);
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

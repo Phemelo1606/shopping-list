@@ -1,0 +1,39 @@
+.image-picker {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.image-picker-preview {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    font-size: 24px;
+    color: var(--color-muted);
+    background: var(--color-surface-soft);
+    border-radius: var(--radius-md);
+}
+
+.image-picker-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-picker-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Visually hidden; the buttons above open it. Stays in the DOM so the label still works. */
+.image-picker-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
