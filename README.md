@@ -2,6 +2,10 @@
 
 A responsive shopping-list app built with React, TypeScript, Redux Toolkit, React Router, Vite, and JSON Server. Users can create separate shopping lists, manage items, track what they have bought, and share lists with other registered users.
 
+## Hosted app
+
+Try Pantry List: [shopping-list-phemelo.vercel.app](https://shopping-list-phemelo.vercel.app/)
+
 ## Features
 
 - Register and log in with an email address and password.
