@@ -1,4 +1,4 @@
-# Pantry List
+﻿# Pantry List
 
 A responsive shopping-list app built with React, TypeScript, Redux Toolkit, React Router, Vite, and JSON Server. Users can create separate shopping lists, manage items, track what they have bought, and share lists with other registered users.
 
@@ -51,12 +51,12 @@ Keep JSON Server running while using the app; user accounts, lists, and items ar
 
 ## Available scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the Vite development server |
-| `npm run build` | Type-check and create a production build in `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | Run ESLint |
+| Command           | Description                                         |
+| ----------------- | --------------------------------------------------- |
+| `npm run dev`     | Start the Vite development server                   |
+| `npm run build`   | Type-check and create a production build in `dist/` |
+| `npm run preview` | Serve the production build locally                  |
+| `npm run lint`    | Run ESLint                                          |
 
 JSON Server is started separately with the command above; there is not currently an npm script that starts both servers together.
 
@@ -121,3 +121,7 @@ Passwords are hashed with bcryptjs before being stored; they are not encrypted f
 ## Design reference
 
 - [Figma design](https://www.figma.com/design/HyTp4BG8pUIaUEKxDPG0sg/Untitled?node-id=0-1&t=tvHY6OeC4iLBM5z7-1)
+
+## Live Link
+
+- https://shopping-list-phemelo.vercel.app/
