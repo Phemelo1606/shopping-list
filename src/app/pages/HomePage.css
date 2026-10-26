@@ -1,0 +1,94 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.home-heading {
+    min-width: 0;
+}
+
+.home-eyebrow {
+    margin: 0 0 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.home-title {
+    font-size: 48px;
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+}
+
+.home-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.home-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.home-search {
+    flex: 1 1 260px;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.home-loading {
+    display: grid;
+    place-items: center;
+    padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+    .home-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-title {
+        font-size: 34px;
+    }
+
+    .home-actions {
+        width: 100%;
+    }
+
+    .home-actions .button--primary {
+        flex: 1 0 100%;
+        order: -1;
+    }
+
+    .home-toolbar>* {
+        flex: 1 1 100%;
+    }
+
+    .home-toolbar .form-field {
+        width: 100%;
+    }
+
+    .home-toolbar .select-input--compact {
+        width: 100%;
+    }
+}
